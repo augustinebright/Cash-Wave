@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cash Wave</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f2fa;
+      color: #222;
+    }
+
+    header {
+      background: #641b91;
+      color: white;
+      padding: 25px;
+      border-radius: 0 0 25px 25px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      color: #e5d5f0;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .balance {
+      background: #641b91;
+      color: white;
+      padding: 25px;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+    .balance h2 {
+      font-size: 32px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px #ddd;
+    }
+
+    button {
+      background: #641b91;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      width: 100%;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .note {
+      color: #666;
+      font-size: 13px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Cash Wave</h1>
+    <p>Your rewards and referral platform</p>
+  </header>
+
+  <div class="container">
+
+    <div class="balance">
+      <p>Your Demo Balance</p>
+      <h2>₦0.00</h2>
+      <p>Welcome to Cash Wave!</p>
+    </div>
+
+    <div class="card">
+      <h2>Create Your Account</h2>
+
+      <p>Join Cash Wave and start earning genuine rewards.</p>
+
+      <input
+        type="text"
+        placeholder="Enter your name"
+        id="username"
+      >
+
+      <button onclick="registerUser()">
+        Get Started
+      </button>
+
+      <p id="welcome"></p>
+
+      <p class="note">
+        This is a demonstration website.
+        No real account or money is created.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Invite Friends</h2>
+
+      <p>Share your referral link with friends.</p>
+
+      <input
+        type="text"
+        id="referral"
+        readonly
+        value="Your referral link will appear here"
+      >
+
+      <button onclick="copyReferral()">
+        Copy Referral Link
+      </button>
+
+      <p class="note">
+        Referral rewards will only be available
+        when a genuine rewards system is connected.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Rewards</h2>
+
+      <p>Available Rewards: ₦0.00</p>
+
+      <p class="note">
+        Real rewards will be added after the
+        platform's reward system is configured.
+      </p>
+    </div>
+
+  </div>
+
+  <footer>
+    Cash Wave © 2026
+  </footer>
+
+  <script>
+    function registerUser() {
+      const name =
+        document.getElementById("username").value.trim();
+
+      if (!name) {
+        alert("Please enter your name.");
+        return;
+      }
+
+      document.getElementById("welcome").textContent =
+        "Welcome to Cash Wave, " + name + "!";
+
+      const link =
+        window.location.href.split("?")[0] +
+        "?ref=" + encodeURIComponent(name);
+
+      document.getElementById("referral").value = link;
+    }
+
+    function copyReferral() {
+      const link =
+        document.getElementById("referral").value;
+
+      if (!link || link.includes("Your referral")) {
+        alert("Please create your account first.");
+        return;
+      }
+
+      navigator.clipboard.writeText(link)
+        .then(() => alert("Referral link copied!"))
+        .catch(() => alert("Please copy the link manually."));
+    }
+  </script>
+
+</body>
+        </html>
